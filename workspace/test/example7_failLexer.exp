@@ -1,0 +1,14 @@
+func factorial(n : int) : int {
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+\* comentário sem fechar
+
+func main() : int {
+  let result : int = factorial(5);
+  print(result);
+  return 0;
+}
