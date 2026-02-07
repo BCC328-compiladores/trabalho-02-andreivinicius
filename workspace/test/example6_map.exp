@@ -1,0 +1,7 @@
+forall a b . func map(f : (a) -> b, v : a[]) : b[] {
+  let result : b[] = new b[v.size]; // Adicionando a declaracao de tipo
+  for (let i = 0; i < v.size; i = i + 1) { // Sintaxe completa do for
+    result[i] = f(v[i]);
+  }
+  return result;
+}
