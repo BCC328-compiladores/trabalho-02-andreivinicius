@@ -22,7 +22,7 @@ cabal build
 ```
 
 ```
-cabal run bcc328 <Caminho_Arquivo_Teste> opcional -> [lexer | parser | pretty | check | interp]
+cabal run bcc328 -- <Caminho_Arquivo_Teste> opcional -> [lexer | parser | pretty | check | interp]
 ```
 
 # Exemplos dados pelo professor <caminhos possíveis>
@@ -51,7 +51,7 @@ happy src/Exp/Frontend/Parser/Happy/ExpParser.y --ghc
 
 - Para rodar o compilador forma génerica
 ```
-runghc -isrc app/Main.hs <Caminho_Arquivo_Teste> opcional -> [lexer | parser | pretty] 
+runghc -isrc app/Main.hs <Caminho_Arquivo_Teste> opcional -> [lexer | parser | pretty | check | interp] 
 ```
 
 - Exemplo

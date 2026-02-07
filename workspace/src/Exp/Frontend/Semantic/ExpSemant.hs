@@ -405,9 +405,9 @@ ensureUnique label xs = do
     removeFirst y = go
       where
         go [] = []
-        go (x:xs)
-          | x == y = xs
-          | otherwise = x : go xs
+        go (x:rest)
+          | x == y = rest
+          | otherwise = x : go rest
 
 ensureNotDeclared :: Env -> String -> Infer ()
 ensureNotDeclared env name = case scopes env of

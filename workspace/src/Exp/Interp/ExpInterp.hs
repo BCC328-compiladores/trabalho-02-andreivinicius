@@ -233,7 +233,7 @@ evalBin op l r = do
   where
     boolBin f (VBool a) (VBool b) = pure (VBool (f a b))
     boolBin _ _ _ = throwError "Expected boolean operands"
-    numBin fInt fFloat (VInt a) (VInt b) = pure (VInt (fInt a b))
+    numBin fInt _ (VInt a) (VInt b) = pure (VInt (fInt a b))
     numBin _ fFloat (VFloat a) (VFloat b) = pure (VFloat (fFloat a b))
     numBin _ _ _ _ = throwError "Expected numeric operands"
     numCmp fInt _ (VInt a) (VInt b) = pure (VBool (fInt a b))
@@ -296,18 +296,6 @@ declareVar name val = do
       if Map.member name s
         then throwError $ "Variable already declared: " ++ name
         else modify (\st -> st { scopes = Map.insert name val s : ss })
-
-lookupVar :: String -> Interp Value
-lookupVar name = do
-  m <- lookupVarMaybe name
-  case m of
-    Nothing -> throwError $ "Undefined variable: " ++ name
-    Just v  -> pure v
-  where
-    lookupInScopes [] = Nothing
-    lookupInScopes (s:ss) = case Map.lookup name s of
-      Just v  -> Just v
-      Nothing -> lookupInScopes ss
 
 lookupVarMaybe :: String -> Interp (Maybe Value)
 lookupVarMaybe name = do
