@@ -22,7 +22,7 @@ cabal build
 ```
 
 ```
-cabal run bcc328 <Caminho_Arquivo_Teste> opcional -> [lexer | parser | pretty]
+cabal run bcc328 <Caminho_Arquivo_Teste> opcional -> [lexer | parser | pretty | check | interp]
 ```
 
 # Exemplos dados pelo professor <caminhos possíveis>
@@ -38,8 +38,9 @@ test/example6_map.exp
 
 - Exemplo
 ```
-cabal run bcc328 test/example1_factorial.exp
-cabal run bcc328 test/example1_factorial.exp --lexer
+cabal run bcc328 -- test/example1_factorial.exp
+cabal run bcc328 -- test/example1_factorial.exp --lexer
+cabal run bcc328 -- test/example1_factorial.exp --check
 ```
 
 - Preparando os arquivos para testar isoladamente Alex e Happy

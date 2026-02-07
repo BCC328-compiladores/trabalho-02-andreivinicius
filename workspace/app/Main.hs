@@ -54,6 +54,7 @@ runSemanticPhase src = do
 
 runInterpPhase :: String -> IO ()
 runInterpPhase src = do
+  putStrLn "=== Interp Output ===\n"
   res <- expParser src
   case res of
     Left err -> hPutStrLn stderr ("[PARSER ERROR]\n" ++ err)
@@ -67,9 +68,12 @@ runAllPhases content = do
   putStrLn "\n-----------------------------------------------------\n"
   runParserPhase content
   putStrLn "\n-----------------------------------------------------\n"
+  runPrettyPhase content
+  putStrLn "\n-----------------------------------------------------\n"
   runSemanticPhase content
   putStrLn "\n-----------------------------------------------------\n"
-  runPrettyPhase content
+  runInterpPhase content
+  putStrLn "\n\n"
 
 processFile :: String -> String -> IO ()
 processFile content "lexer"   = runLexerPhase content
