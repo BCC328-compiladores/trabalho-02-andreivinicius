@@ -4,7 +4,7 @@ struct Person {
   height : float;
 }
 
-func fail() : void {
+func main() : void {
   // Arranjo de registros
   let people : People[3];
   people[0] = Person{"Alice", 25, 1.65};

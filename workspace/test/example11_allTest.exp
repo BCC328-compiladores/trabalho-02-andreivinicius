@@ -1,0 +1,91 @@
+struct Person {
+  name : string;
+  age : int;
+  height : float;
+}
+
+func factorial(n : int) : int {
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+func reverse(arr : int[], size : int) : int[] {
+  let result : int[] = new int[size];
+  let i : int = 0;
+  while (i < size) {
+    result[i] = arr[size - i - 1];
+    i = i + 1;
+  }
+  return result;
+}
+
+func calculateBMI(weight : float, height : float) : float {
+  return weight / (height * height);
+}
+
+func isAdult(age : int) : bool {
+  return age >= 18;
+}
+
+func id(x){
+  return x;
+}
+
+forall a b . func map(f : (a) -> b, v : a[]) : b[] {
+  let result : b[] = new b[v.size]; // Adicionando a declaracao de tipo
+  for (let i = 0; i < v.size; i = i + 1) { // Sintaxe completa do for
+    result[i] = f(v[i]);
+  }
+  return result;
+}
+
+func dobro(x : int) : int {
+    return x * 2;
+}
+
+func main() : void {
+  let result : int = factorial(5);
+  print(result);
+
+  // Arranjo de registros
+  let people : Person[3];
+  people[0] = Person{"Alice", 25, 1.65};
+  people[1] = Person{"Bob", 30, 1.80};
+  people[2] = Person{"Charlie", 35, 1.75};
+
+  // Iteracao sobre arranjo
+  let i : int = 0;
+  while (i < 3) {
+    print(people[i].name);
+    print(people[i].age);
+    print(people[i].height);
+    i = i + 1;
+  }
+
+  let original : int[5] = [1, 2, 3, 4, 5];
+  let reversed : int[] = reverse(original, 5);
+
+  let j : int = 0;
+  while (j < 5) {
+    print(reversed[j]);
+    j = j + 1;
+  }
+
+  let bmi : float = calculateBMI(70.5, 1.75);
+  let adult : bool = isAdult(20);
+  print(bmi);
+  print(adult);
+
+  if (adult && bmi > 25.0) {
+    print("Adulto com sobrepeso");
+  } else {
+    print("Condicao normal");
+  }
+
+  id (bmi);
+
+  let dobrados : int[] = map(dobro, original);
+}
